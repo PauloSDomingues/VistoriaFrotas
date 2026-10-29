@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vistoria de Frota - Provedor</title>
+    <title>Vistoria de Frota Universal</title>
     <!-- PWA Manifest -->
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#2563eb">
@@ -23,14 +23,16 @@
         <div class="max-w-3xl mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center space-x-2">
                 <i class="fa-solid fa-truck-fast text-2xl"></i>
-                <h1 class="text-lg font-bold tracking-wide">Vistoria de Frota - ISP</h1>
+                <h1 class="text-lg font-bold tracking-wide">Vistoria de Frota</h1>
             </div>
-            <button onclick="alternarTela('historico')" id="btnHistorico" class="bg-blue-700 hover:bg-blue-800 text-xs px-3 py-2 rounded-lg font-medium transition flex items-center gap-1">
-                <i class="fa-solid fa-clock-rotate-left"></i> Histórico
-            </button>
-            <button onclick="alternarTela('formulario')" id="btnForm" class="hidden bg-blue-700 hover:bg-blue-800 text-xs px-3 py-2 rounded-lg font-medium transition flex items-center gap-1">
-                <i class="fa-solid fa-plus"></i> Nova Vistoria
-            </button>
+            <div class="flex gap-2">
+                <button onclick="alternarTela('historico')" id="btnHistorico" class="bg-blue-700 hover:bg-blue-800 text-xs px-3 py-2 rounded-lg font-medium transition flex items-center gap-1">
+                    <i class="fa-solid fa-clock-rotate-left"></i> Histórico
+                </button>
+                <button onclick="alternarTela('formulario')" id="btnForm" class="hidden bg-blue-700 hover:bg-blue-800 text-xs px-3 py-2 rounded-lg font-medium transition flex items-center gap-1">
+                    <i class="fa-solid fa-plus"></i> Nova Vistoria
+                </button>
+            </div>
         </div>
     </header>
 
@@ -42,30 +44,26 @@
             <!-- Dados Gerais -->
             <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200">
                 <h2 class="text-sm font-semibold text-blue-600 uppercase tracking-wider mb-3">
-                    <i class="fa-solid fa-info-circle mr-1"></i> Dados da Vistoria
+                    <i class="fa-solid fa-info-circle mr-1"></i> Dados do Veículo e Vistoria
                 </h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
-                        <label class="block text-xs font-medium text-slate-600 mb-1">Veículo / Placa</label>
-                        <select id="veiculo" class="w-full border border-slate-300 rounded-lg p-2 text-sm focus:ring-2 focus:ring-blue-500 outline-none">
-                            <option value="">Selecione o veículo...</option>
-                            <option value="Fiat Uno AYD7F01 ">Fiat Uno AYD7F01</option>
-                            <option value="Fiat Uno AZW-5J93 ">Fiat Uno AZW-5J93</option>
-                            <option value="Fiat Fiorino QOP3B89 ">Fiat Fiorino QOP3B89</option>
-                            <option value="Fiat Fiorino SJD9D95 ">Fiat Fiorino SJD9D95</option>
-                            <option value="Fiat Fiorino SJF5I91 ">Fiat Fiorino SJF5I91</option>
-                            <option value="Chev Montana QPN-3I14 ">Chev Montana QPN-3I14</option>
-                        </select>
+                        <label class="block text-xs font-medium text-slate-600 mb-1">Modelo do Veículo</label>
+                        <input type="text" id="modeloVeiculo" placeholder="Ex: Fiat Uno, Moto Honda..." class="w-full border border-slate-300 rounded-lg p-2 text-sm focus:ring-2 focus:ring-blue-500 outline-none">
                     </div>
                     <div>
-                        <label class="block text-xs font-medium text-slate-600 mb-1">Nome do Motorista / Técnico</label>
+                        <label class="block text-xs font-medium text-slate-600 mb-1">Placa do Veículo</label>
+                        <input type="text" id="placaVeiculo" placeholder="Ex: ABC-1234" oninput="this.value = this.value.toUpperCase()" class="w-full border border-slate-300 rounded-lg p-2 text-sm uppercase focus:ring-2 focus:ring-blue-500 outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-slate-600 mb-1">Nome do Motorista / Responsável</label>
                         <input type="text" id="motorista" placeholder="Seu nome completo" class="w-full border border-slate-300 rounded-lg p-2 text-sm focus:ring-2 focus:ring-blue-500 outline-none">
                     </div>
                     <div>
                         <label class="block text-xs font-medium text-slate-600 mb-1">Quilometragem Atual (KM)</label>
                         <input type="number" id="quilometragem" placeholder="Ex: 45200" class="w-full border border-slate-300 rounded-lg p-2 text-sm focus:ring-2 focus:ring-blue-500 outline-none">
                     </div>
-                    <div>
+                    <div class="sm:col-span-2">
                         <label class="block text-xs font-medium text-slate-600 mb-1">Data da Inspeção</label>
                         <input type="date" id="dataVistoria" class="w-full border border-slate-300 rounded-lg p-2 text-sm focus:ring-2 focus:ring-blue-500 outline-none">
                     </div>
@@ -84,13 +82,11 @@
                 </h2>
                 <div class="flex flex-col sm:flex-row gap-3 items-center">
                     <div class="w-full flex gap-2">
-                        <!-- Opção Câmera Direta -->
                         <label class="flex-1 bg-slate-50 border-2 border-dashed border-slate-300 hover:border-blue-500 rounded-lg p-3 text-center cursor-pointer transition">
                             <i class="fa-solid fa-camera text-blue-500 text-lg mb-1 block"></i>
                             <span class="text-xs font-medium text-slate-600">Tirar Foto</span>
                             <input type="file" accept="image/*" capture="environment" id="fotoCamera" class="hidden" onchange="processarFoto(event)">
                         </label>
-                        <!-- Opção Galeria de Arquivos -->
                         <label class="flex-1 bg-slate-50 border-2 border-dashed border-slate-300 hover:border-blue-500 rounded-lg p-3 text-center cursor-pointer transition">
                             <i class="fa-solid fa-image text-emerald-500 text-lg mb-1 block"></i>
                             <span class="text-xs font-medium text-slate-600">Galeria</span>
@@ -98,7 +94,6 @@
                         </label>
                     </div>
                 </div>
-                <!-- Miniaturas das fotos -->
                 <div id="galeriaFotos" class="grid grid-cols-3 sm:grid-cols-4 gap-2 mt-3"></div>
             </div>
 
@@ -119,7 +114,7 @@
                 </div>
                 <div class="relative">
                     <i class="fa-solid fa-search absolute left-3 top-3 text-slate-400 text-sm"></i>
-                    <input type="text" id="filtroHistorico" placeholder="Buscar por placa ou motorista..." onkeyup="filtrarHistorico()" class="w-full pl-9 pr-3 py-2 border border-slate-300 rounded-lg text-sm outline-none focus:ring-2 focus:ring-blue-500">
+                    <input type="text" id="filtroHistorico" placeholder="Buscar por modelo, placa ou motorista..." onkeyup="filtrarHistorico()" class="w-full pl-9 pr-3 py-2 border border-slate-300 rounded-lg text-sm outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
             </div>
 
@@ -160,7 +155,6 @@
 
     <!-- SCRIPT DA APLICAÇÃO -->
     <script>
-        // Estrutura do Checklist com Categorias e Itens Específicos de ISP + Novos Campos
         const categoriasChecklist = [
             {
                 id: 'mecanica',
@@ -218,10 +212,9 @@
         ];
 
         let fotosSalvas = [];
-        let vistoriasSalvas = JSON.parse(localStorage.getItem('vistorias_frota')) || [];
+        let vistoriasSalvas = JSON.parse(localStorage.getItem('vistorias_frota_universal')) || [];
         let vistoriaAtualDetalhe = null;
 
-        // Inicialização
         document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('dataVistoria').valueAsDate = new Date();
             renderizarChecklist();
@@ -229,7 +222,6 @@
             registrarServiceWorker();
         });
 
-        // Desenhar Checklist na Tela
         function renderizarChecklist() {
             const container = document.getElementById('containerChecklist');
             container.innerHTML = '';
@@ -261,14 +253,13 @@
                         </div>
                         <div class="mt-3 pt-2 border-t border-slate-100">
                             <label class="block text-xs font-medium text-slate-500 mb-1">Observações / Detalhes desta seção:</label>
-                            <input type="text" id="obs_${cat.id}" placeholder="Ex: Pneu dianteiro esquerdo com desgaste..." class="w-full border border-slate-200 bg-slate-50 rounded-lg p-2 text-xs outline-none focus:bg-white focus:ring-1 focus:ring-blue-500">
+                            <input type="text" id="obs_${cat.id}" placeholder="Ex: Avaria leve no parachoque..." class="w-full border border-slate-200 bg-slate-50 rounded-lg p-2 text-xs outline-none focus:bg-white focus:ring-1 focus:ring-blue-500">
                         </div>
                     </div>
                 `;
             });
         }
 
-        // Processar e Compactar Imagens
         function processarFoto(event) {
             const file = event.target.files[0];
             if (!file) return;
@@ -280,7 +271,6 @@
                     const canvas = document.createElement('canvas');
                     const ctx = canvas.getContext('2d');
                     
-                    // Redimensionar para otimizar espaço local
                     const MAX_WIDTH = 800;
                     const MAX_HEIGHT = 800;
                     let width = img.width;
@@ -326,19 +316,18 @@
             atualizarGaleriaFotos();
         }
 
-        // Salvar Vistoria
         function salvarVistoria() {
-            const veiculo = document.getElementById('veiculo').value;
-            const motorista = document.getElementById('motorista').value;
-            const quilometragem = document.getElementById('quilometragem').value;
+            const modelo = document.getElementById('modeloVeiculo').value.trim();
+            const placa = document.getElementById('placaVeiculo').value.trim();
+            const motorista = document.getElementById('motorista').value.trim();
+            const quilometragem = document.getElementById('quilometragem').value.trim();
             const dataVistoria = document.getElementById('dataVistoria').value;
 
-            if (!veiculo || !motorista || !quilometragem) {
-                alert('Por favor, preencha o Veículo, o Motorista e a Quilometragem!');
+            if (!modelo || !placa || !motorista || !quilometragem) {
+                alert('Por favor, preencha o Modelo, a Placa, o Motorista e a Quilometragem!');
                 return;
             }
 
-            // Coletar itens do checklist e observações
             let dadosChecklist = [];
             categoriasChecklist.forEach(cat => {
                 let itensCat = [];
@@ -356,7 +345,8 @@
 
             const novaVistoria = {
                 id: Date.now(),
-                veiculo,
+                modelo,
+                placa,
                 motorista,
                 quilometragem,
                 data: dataVistoria,
@@ -365,7 +355,7 @@
             };
 
             vistoriasSalvas.unshift(novaVistoria);
-            localStorage.setItem('vistorias_frota', JSON.stringify(vistoriasSalvas));
+            localStorage.setItem('vistorias_frota_universal', JSON.stringify(vistoriasSalvas));
 
             alert('Vistoria salva com sucesso!');
             limparFormulario();
@@ -373,7 +363,8 @@
         }
 
         function limparFormulario() {
-            document.getElementById('veiculo').value = '';
+            document.getElementById('modeloVeiculo').value = '';
+            document.getElementById('placaVeiculo').value = '';
             document.getElementById('motorista').value = '';
             document.getElementById('quilometragem').value = '';
             fotosSalvas = [];
@@ -381,7 +372,6 @@
             renderizarChecklist();
         }
 
-        // Histórico e Listagem
         function carregarHistorico() {
             const lista = document.getElementById('listaHistorico');
             const contador = document.getElementById('contadorHistorico');
@@ -396,7 +386,7 @@
             lista.innerHTML = vistoriasSalvas.map(v => `
                 <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 flex justify-between items-center">
                     <div>
-                        <h4 class="font-bold text-sm text-slate-800">${v.veiculo}</h4>
+                        <h4 class="font-bold text-sm text-slate-800">${v.modelo} <span class="text-xs font-normal text-slate-500">(${v.placa})</span></h4>
                         <p class="text-xs text-slate-500 mt-0.5">Motorista: <span class="font-medium text-slate-700">${v.motorista}</span></p>
                         <p class="text-xs text-slate-500">Data: ${v.data} | KM: ${v.quilometragem}</p>
                     </div>
@@ -410,7 +400,7 @@
         function filtrarHistorico() {
             const termo = document.getElementById('filtroHistorico').value.toLowerCase();
             const filtradas = vistoriasSalvas.filter(v => 
-                v.veiculo.toLowerCase().includes(termo) || v.motorista.toLowerCase().includes(termo)
+                v.modelo.toLowerCase().includes(termo) || v.placa.toLowerCase().includes(termo) || v.motorista.toLowerCase().includes(termo)
             );
             
             const lista = document.getElementById('listaHistorico');
@@ -422,7 +412,7 @@
             lista.innerHTML = filtradas.map(v => `
                 <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 flex justify-between items-center">
                     <div>
-                        <h4 class="font-bold text-sm text-slate-800">${v.veiculo}</h4>
+                        <h4 class="font-bold text-sm text-slate-800">${v.modelo} <span class="text-xs font-normal text-slate-500">(${v.placa})</span></h4>
                         <p class="text-xs text-slate-500 mt-0.5">Motorista: <span class="font-medium text-slate-700">${v.motorista}</span></p>
                         <p class="text-xs text-slate-500">Data: ${v.data} | KM: ${v.quilometragem}</p>
                     </div>
@@ -433,7 +423,6 @@
             `).join('');
         }
 
-        // Modal de Detalhes
         function abrirDetalhes(id) {
             const v = vistoriasSalvas.find(item => item.id === id);
             if (!v) return;
@@ -463,7 +452,7 @@
 
             document.getElementById('conteudoModalDetalhes').innerHTML = `
                 <div class="bg-slate-50 p-3 rounded-lg border border-slate-200">
-                    <p><strong>Veículo:</strong> ${v.veiculo}</p>
+                    <p><strong>Veículo:</strong> ${v.modelo} (${v.placa})</p>
                     <p><strong>Motorista:</strong> ${v.motorista}</p>
                     <p><strong>KM:</strong> ${v.quilometragem} | <strong>Data:</strong> ${v.data}</p>
                 </div>
@@ -482,7 +471,6 @@
             vistoriaAtualDetalhe = null;
         }
 
-        // Geração de PDF Completo com jsPDF
         function exportarPDFModal() {
             if (!vistoriaAtualDetalhe) return;
             const v = vistoriaAtualDetalhe;
@@ -494,7 +482,7 @@
             doc.setFont("helvetica", "bold");
             doc.setFontSize(16);
             doc.setTextColor(37, 99, 235);
-            doc.text("Relatorio de Vistoria de Frota - ISP", 14, y);
+            doc.text("Relatorio de Vistoria de Veiculo", 14, y);
             
             y += 10;
             doc.setFontSize(10);
@@ -502,9 +490,9 @@
             doc.text(`Data: ${v.data} | Quilometragem: ${v.quilometragem} KM`, 14, y);
             
             y += 6;
-            doc.text(`Veiculo: ${v.veiculo}`, 14, y);
+            doc.text(`Veiculo: ${v.modelo} - Placa: ${v.placa}`, 14, y);
             y += 6;
-            doc.text(`Motorista / Tecnico: ${v.motorista}`, 14, y);
+            doc.text(`Motorista / Responsavel: ${v.motorista}`, 14, y);
 
             y += 10;
             doc.setDrawColor(200, 200, 200);
@@ -545,7 +533,6 @@
                 y += 4;
             });
 
-            // Adicionar fotos se houver
             if (v.fotos && v.fotos.length > 0) {
                 doc.addPage();
                 y = 20;
@@ -573,10 +560,9 @@
                 });
             }
 
-            doc.save(`Vistoria_${v.veiculo.replace(/[^a-zA-Z0-9]/g, '_')}_${v.data}.pdf`);
+            doc.save(`Vistoria_${v.placa}_${v.data}.pdf`);
         }
 
-        // Enviar por WhatsApp
         function compartilharWhatsApp() {
             if (!vistoriaAtualDetalhe) return;
             const v = vistoriaAtualDetalhe;
@@ -593,19 +579,18 @@
 
             if (!textoAvarias) textoAvarias = "\nNenhuma avaria reportada. Todos os itens OK!";
 
-            const mensagem = `📋 *RELATÓRIO DE VISTORIA - FROTA*` +
-                             `\n🚗 *Veículo:* ${v.veiculo}` +
+            const mensagem = `📋 *RELATÓRIO DE VISTORIA - VEÍCULO*` +
+                             `\n🚗 *Veículo:* ${v.modelo} (${v.placa})` +
                              `\n👤 *Motorista:* ${v.motorista}` +
                              `\n📅 *Data:* ${v.data} | *KM:* ${v.quilometragem}` +
                              `\n\n🔍 *Resumo de Inspeção:*` +
                              textoAvarias +
-                             `\n\n_Relatório gerado pelo App Interno de Frota._`;
+                             `\n\n_Relatório gerado pelo App de Vistoria._`;
 
             const linkWp = `https://api.whatsapp.com/send?text=${encodeURIComponent(mensagem)}`;
             window.open(linkWp, '_blank');
         }
 
-        // Alternar Telas
         function alternarTela(tela) {
             const form = document.getElementById('secaoFormulario');
             const hist = document.getElementById('secaoHistorico');
@@ -627,7 +612,6 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Service Worker PWA básico
         function registrarServiceWorker() {
             if ('serviceWorker' in navigator) {
                 const swCode = `self.addEventListener('fetch', function(event) { event.respondWith(fetch(event.request).catch(() => caches.match(event.request))); });`;
