@@ -4,32 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vistoria de Frota Universal</title>
-    <!-- PWA Manifest -->
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#2563eb">
+    <meta name="theme-color" content="#059669">
     <link rel="apple-touch-icon" href="icon-192.png">
     
-    <!-- Tailwind CSS para Estilização Rápida e Responsiva -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome para Ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Biblioteca jsPDF para exportar PDF completo -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body class="bg-slate-100 text-slate-800 font-sans antialiased pb-12">
 
-    <!-- Cabeçalho -->
-    <header class="bg-blue-600 text-white shadow-md sticky top-0 z-50">
+    <!-- Cabeçalho (Verde Esmeralda) -->
+    <header class="bg-emerald-600 text-white shadow-md sticky top-0 z-50">
         <div class="max-w-3xl mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center space-x-2">
                 <i class="fa-solid fa-truck-fast text-2xl"></i>
                 <h1 class="text-lg font-bold tracking-wide">Vistoria de Frota</h1>
             </div>
             <div class="flex gap-2">
-                <button onclick="alternarTela('historico')" id="btnHistorico" class="bg-blue-700 hover:bg-blue-800 text-xs px-3 py-2 rounded-lg font-medium transition flex items-center gap-1">
+                <button onclick="alternarTela('historico')" id="btnHistorico" class="bg-emerald-700 hover:bg-emerald-800 text-xs px-3 py-2 rounded-lg font-medium transition flex items-center gap-1">
                     <i class="fa-solid fa-clock-rotate-left"></i> Histórico
                 </button>
-                <button onclick="alternarTela('formulario')" id="btnForm" class="hidden bg-blue-700 hover:bg-blue-800 text-xs px-3 py-2 rounded-lg font-medium transition flex items-center gap-1">
+                <button onclick="alternarTela('formulario')" id="btnForm" class="hidden bg-emerald-700 hover:bg-emerald-800 text-xs px-3 py-2 rounded-lg font-medium transition flex items-center gap-1">
                     <i class="fa-solid fa-plus"></i> Nova Vistoria
                 </button>
             </div>
@@ -38,57 +34,50 @@
 
     <main class="max-w-3xl mx-auto px-4 mt-4">
 
-        <!-- TELA DO FORMULÁRIO DE VISTORIA -->
         <section id="secaoFormulario" class="space-y-4">
-            
-            <!-- Dados Gerais -->
             <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200">
-                <h2 class="text-sm font-semibold text-blue-600 uppercase tracking-wider mb-3">
+                <h2 class="text-sm font-semibold text-emerald-600 uppercase tracking-wider mb-3">
                     <i class="fa-solid fa-info-circle mr-1"></i> Dados do Veículo e Vistoria
                 </h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
                         <label class="block text-xs font-medium text-slate-600 mb-1">Modelo do Veículo</label>
-                        <input type="text" id="modeloVeiculo" placeholder="Ex: Fiat Uno, Moto Honda..." class="w-full border border-slate-300 rounded-lg p-2 text-sm focus:ring-2 focus:ring-blue-500 outline-none">
+                        <input type="text" id="modeloVeiculo" placeholder="Ex: Fiat Uno, Moto Honda..." class="w-full border border-slate-300 rounded-lg p-2 text-sm focus:ring-2 focus:ring-emerald-500 outline-none">
                     </div>
                     <div>
                         <label class="block text-xs font-medium text-slate-600 mb-1">Placa do Veículo</label>
-                        <input type="text" id="placaVeiculo" placeholder="Ex: ABC-1234" oninput="this.value = this.value.toUpperCase()" class="w-full border border-slate-300 rounded-lg p-2 text-sm uppercase focus:ring-2 focus:ring-blue-500 outline-none">
+                        <input type="text" id="placaVeiculo" placeholder="Ex: ABC-1234" oninput="this.value = this.value.toUpperCase()" class="w-full border border-slate-300 rounded-lg p-2 text-sm uppercase focus:ring-2 focus:ring-emerald-500 outline-none">
                     </div>
                     <div>
                         <label class="block text-xs font-medium text-slate-600 mb-1">Nome do Motorista / Responsável</label>
-                        <input type="text" id="motorista" placeholder="Seu nome completo" class="w-full border border-slate-300 rounded-lg p-2 text-sm focus:ring-2 focus:ring-blue-500 outline-none">
+                        <input type="text" id="motorista" placeholder="Seu nome completo" class="w-full border border-slate-300 rounded-lg p-2 text-sm focus:ring-2 focus:ring-emerald-500 outline-none">
                     </div>
                     <div>
                         <label class="block text-xs font-medium text-slate-600 mb-1">Quilometragem Atual (KM)</label>
-                        <input type="number" id="quilometragem" placeholder="Ex: 45200" class="w-full border border-slate-300 rounded-lg p-2 text-sm focus:ring-2 focus:ring-blue-500 outline-none">
+                        <input type="number" id="quilometragem" placeholder="Ex: 45200" class="w-full border border-slate-300 rounded-lg p-2 text-sm focus:ring-2 focus:ring-emerald-500 outline-none">
                     </div>
                     <div class="sm:col-span-2">
                         <label class="block text-xs font-medium text-slate-600 mb-1">Data da Inspeção</label>
-                        <input type="date" id="dataVistoria" class="w-full border border-slate-300 rounded-lg p-2 text-sm focus:ring-2 focus:ring-blue-500 outline-none">
+                        <input type="date" id="dataVistoria" class="w-full border border-slate-300 rounded-lg p-2 text-sm focus:ring-2 focus:ring-emerald-500 outline-none">
                     </div>
                 </div>
             </div>
 
-            <!-- Checklist Dinâmico por Categorias -->
-            <div id="containerChecklist" class="space-y-4">
-                <!-- Preenchido via JavaScript -->
-            </div>
+            <div id="containerChecklist" class="space-y-4"></div>
 
-            <!-- Seção de Foto Geral / Avarias -->
             <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200">
-                <h2 class="text-sm font-semibold text-blue-600 uppercase tracking-wider mb-3">
+                <h2 class="text-sm font-semibold text-emerald-600 uppercase tracking-wider mb-3">
                     <i class="fa-solid fa-camera mr-1"></i> Registro Fotográfico de Avarias
                 </h2>
                 <div class="flex flex-col sm:flex-row gap-3 items-center">
                     <div class="w-full flex gap-2">
-                        <label class="flex-1 bg-slate-50 border-2 border-dashed border-slate-300 hover:border-blue-500 rounded-lg p-3 text-center cursor-pointer transition">
-                            <i class="fa-solid fa-camera text-blue-500 text-lg mb-1 block"></i>
+                        <label class="flex-1 bg-slate-50 border-2 border-dashed border-slate-300 hover:border-emerald-500 rounded-lg p-3 text-center cursor-pointer transition">
+                            <i class="fa-solid fa-camera text-emerald-600 text-lg mb-1 block"></i>
                             <span class="text-xs font-medium text-slate-600">Tirar Foto</span>
                             <input type="file" accept="image/*" capture="environment" id="fotoCamera" class="hidden" onchange="processarFoto(event)">
                         </label>
-                        <label class="flex-1 bg-slate-50 border-2 border-dashed border-slate-300 hover:border-blue-500 rounded-lg p-3 text-center cursor-pointer transition">
-                            <i class="fa-solid fa-image text-emerald-500 text-lg mb-1 block"></i>
+                        <label class="flex-1 bg-slate-50 border-2 border-dashed border-slate-300 hover:border-emerald-500 rounded-lg p-3 text-center cursor-pointer transition">
+                            <i class="fa-solid fa-image text-emerald-600 text-lg mb-1 block"></i>
                             <span class="text-xs font-medium text-slate-600">Galeria</span>
                             <input type="file" accept="image/*" id="fotoGaleria" class="hidden" onchange="processarFoto(event)">
                         </label>
@@ -97,13 +86,11 @@
                 <div id="galeriaFotos" class="grid grid-cols-3 sm:grid-cols-4 gap-2 mt-3"></div>
             </div>
 
-            <!-- Botão de Salvar -->
-            <button onclick="salvarVistoria()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-xl shadow transition flex items-center justify-center gap-2 text-base">
+            <button onclick="salvarVistoria()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 px-4 rounded-xl shadow transition flex items-center justify-center gap-2 text-base">
                 <i class="fa-solid fa-floppy-disk"></i> Salvar e Finalizar Vistoria
             </button>
         </section>
 
-        <!-- TELA DE HISTÓRICO -->
         <section id="secaoHistorico" class="hidden space-y-4">
             <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200">
                 <div class="flex justify-between items-center mb-3">
@@ -114,37 +101,32 @@
                 </div>
                 <div class="relative">
                     <i class="fa-solid fa-search absolute left-3 top-3 text-slate-400 text-sm"></i>
-                    <input type="text" id="filtroHistorico" placeholder="Buscar por modelo, placa ou motorista..." onkeyup="filtrarHistorico()" class="w-full pl-9 pr-3 py-2 border border-slate-300 rounded-lg text-sm outline-none focus:ring-2 focus:ring-blue-500">
+                    <input type="text" id="filtroHistorico" placeholder="Buscar por modelo, placa ou motorista..." onkeyup="filtrarHistorico()" class="w-full pl-9 pr-3 py-2 border border-slate-300 rounded-lg text-sm outline-none focus:ring-2 focus:ring-emerald-500">
                 </div>
             </div>
 
-            <div id="listaHistorico" class="space-y-3">
-                <!-- Preenchido via JavaScript -->
-            </div>
+            <div id="listaHistorico" class="space-y-3"></div>
         </section>
 
     </main>
 
-    <!-- MODAL DE VISUALIZAÇÃO DE DETALHES -->
     <div id="modalDetalhes" class="fixed inset-0 bg-black/60 z-50 hidden flex items-center justify-center p-4">
         <div class="bg-white w-full max-w-2xl rounded-2xl shadow-xl overflow-hidden flex flex-col max-h-[90vh]">
-            <div class="bg-blue-600 text-white px-4 py-3 flex justify-between items-center">
+            <div class="bg-emerald-600 text-white px-4 py-3 flex justify-between items-center">
                 <h3 class="font-bold text-sm flex items-center gap-2">
                     <i class="fa-solid fa-file-lines"></i> Relatório de Vistoria
                 </h3>
                 <button onclick="fecharModal()" class="text-white hover:text-slate-200 text-lg font-bold">&times;</button>
             </div>
             
-            <div id="conteudoModalDetalhes" class="p-4 overflow-y-auto space-y-4 text-sm flex-1">
-                <!-- Conteúdo gerado via JS -->
-            </div>
+            <div id="conteudoModalDetalhes" class="p-4 overflow-y-auto space-y-4 text-sm flex-1"></div>
 
             <div class="bg-slate-50 border-t border-slate-200 p-3 flex flex-wrap gap-2 justify-end">
-                <button onclick="compartilharWhatsApp()" class="bg-emerald-600 hover:bg-emerald-700 text-white px-3 py-2 rounded-lg text-xs font-medium transition flex items-center gap-1.5">
-                    <i class="fa-brands fa-whatsapp text-sm"></i> Enviar WhatsApp
+                <button onclick="compartilharPDFWhatsApp()" class="bg-emerald-600 hover:bg-emerald-700 text-white px-3 py-2 rounded-lg text-xs font-medium transition flex items-center gap-1.5">
+                    <i class="fa-brands fa-whatsapp text-sm"></i> Enviar PDF no WhatsApp
                 </button>
                 <button onclick="exportarPDFModal()" class="bg-red-600 hover:bg-red-700 text-white px-3 py-2 rounded-lg text-xs font-medium transition flex items-center gap-1.5">
-                    <i class="fa-solid fa-file-pdf text-sm"></i> Baixar PDF Completo
+                    <i class="fa-solid fa-file-pdf text-sm"></i> Baixar PDF
                 </button>
                 <button onclick="fecharModal()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 px-3 py-2 rounded-lg text-xs font-medium transition">
                     Fechar
@@ -153,61 +135,37 @@
         </div>
     </div>
 
-    <!-- SCRIPT DA APLICAÇÃO -->
     <script>
         const categoriasChecklist = [
             {
                 id: 'mecanica',
                 titulo: 'Mecânica e Motor',
                 icone: 'fa-gears',
-                itens: [
-                    'Nível de Óleo do Motor',
-                    'Água do Radiador / Arrefecimento',
-                    'Fluido de Freio',
-                    'Correias e Mangueiras'
-                ]
+                itens: ['Nível de Óleo do Motor', 'Água do Radiador / Arrefecimento', 'Fluido de Freio', 'Correias e Mangueiras']
             },
             {
                 id: 'seguranca',
                 titulo: 'Pneus e Segurança',
                 icone: 'fa-car-burst',
-                itens: [
-                    'Calibragem e Estado dos Pneus',
-                    'Sistema de Freios (Pedal/Estacionamento)',
-                    'Buzina e Sistema Elétrico',
-                    'Faróis, Lanternas e Piscas'
-                ]
+                itens: ['Calibragem e Estado dos Pneus', 'Sistema de Freios (Pedal/Estacionamento)', 'Buzina e Sistema Elétrico', 'Faróis, Lanternas e Piscas']
             },
             {
                 id: 'vidros',
                 titulo: 'Vidros e Espelhos',
                 icone: 'fa-car',
-                itens: [
-                    'Para-brisa (Sem trincas ou avarias)',
-                    'Vidros Laterais e Traseiro',
-                    'Retrovisores (Integridade e regulagem)'
-                ]
+                itens: ['Para-brisa (Sem trincas ou avarias)', 'Vidros Laterais e Traseiro', 'Retrovisores (Integridade e regulagem)']
             },
             {
                 id: 'emergencia',
                 titulo: 'Itens de Emergência',
                 icone: 'fa-triangle-exclamation',
-                itens: [
-                    'Estepe calibrado e em boas condições',
-                    'Macaco e Chave de Roda',
-                    'Triângulo de Sinalização'
-                ]
+                itens: ['Estepe calibrado e em boas condições', 'Macaco e Chave de Roda', 'Triângulo de Sinalização']
             },
             {
                 id: 'telecom',
                 titulo: 'Equipamentos de Telecom (ISP)',
                 icone: 'fa-network-wired',
-                itens: [
-                    'Máquina de Fusão de Fibra',
-                    'OTDR / Power Meter',
-                    'Escada (Fixação e estado geral)',
-                    'Kit EPIs (Capacete, óculos, bota, cinto)'
-                ]
+                itens: ['Máquina de Fusão de Fibra', 'OTDR / Power Meter', 'Escada (Fixação e estado geral)', 'Kit EPIs (Capacete, óculos, bota, cinto)']
             }
         ];
 
@@ -245,15 +203,13 @@
 
                 container.innerHTML += `
                     <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200">
-                        <h2 class="text-sm font-semibold text-blue-600 uppercase tracking-wider mb-2 flex items-center gap-2">
+                        <h2 class="text-sm font-semibold text-emerald-600 uppercase tracking-wider mb-2 flex items-center gap-2">
                             <i class="fa-solid ${cat.icone}"></i> ${cat.titulo}
                         </h2>
-                        <div class="space-y-1 mt-2">
-                            ${htmlItens}
-                        </div>
+                        <div class="space-y-1 mt-2">${htmlItens}</div>
                         <div class="mt-3 pt-2 border-t border-slate-100">
-                            <label class="block text-xs font-medium text-slate-500 mb-1">Observações / Detalhes desta seção:</label>
-                            <input type="text" id="obs_${cat.id}" placeholder="Ex: Avaria leve no parachoque..." class="w-full border border-slate-200 bg-slate-50 rounded-lg p-2 text-xs outline-none focus:bg-white focus:ring-1 focus:ring-blue-500">
+                            <label class="block text-xs font-medium text-slate-500 mb-1">Observações / Detalhes:</label>
+                            <input type="text" id="obs_${cat.id}" placeholder="Ex: Avaria leve no parachoque..." class="w-full border border-slate-200 bg-slate-50 rounded-lg p-2 text-xs outline-none focus:bg-white focus:ring-1 focus:ring-emerald-500">
                         </div>
                     </div>
                 `;
@@ -263,37 +219,27 @@
         function processarFoto(event) {
             const file = event.target.files[0];
             if (!file) return;
-
             const reader = new FileReader();
             reader.onload = function(e) {
                 const img = new Image();
                 img.onload = function() {
                     const canvas = document.createElement('canvas');
                     const ctx = canvas.getContext('2d');
-                    
                     const MAX_WIDTH = 800;
                     const MAX_HEIGHT = 800;
                     let width = img.width;
                     let height = img.height;
 
                     if (width > height) {
-                        if (width > MAX_WIDTH) {
-                            height *= MAX_WIDTH / width;
-                            width = MAX_WIDTH;
-                        }
+                        if (width > MAX_WIDTH) { height *= MAX_WIDTH / width; width = MAX_WIDTH; }
                     } else {
-                        if (height > MAX_HEIGHT) {
-                            width *= MAX_HEIGHT / height;
-                            height = MAX_HEIGHT;
-                        }
+                        if (height > MAX_HEIGHT) { width *= MAX_HEIGHT / height; height = MAX_HEIGHT; }
                     }
 
                     canvas.width = width;
                     canvas.height = height;
                     ctx.drawImage(img, 0, 0, width, height);
-                    
-                    const dataUrl = canvas.toDataURL('image/jpeg', 0.7);
-                    fotosSalvas.push(dataUrl);
+                    fotosSalvas.push(canvas.toDataURL('image/jpeg', 0.7));
                     atualizarGaleriaFotos();
                 }
                 img.src = e.target.result;
@@ -334,9 +280,7 @@
                 cat.itens.forEach((item, idx) => {
                     const radios = document.getElementsByName(`${cat.id}_${idx}`);
                     let status = 'Ok';
-                    for (let r of radios) {
-                        if (r.checked) status = r.value;
-                    }
+                    for (let r of radios) { if (r.checked) status = r.value; }
                     itensCat.push({ nome: item, status: status });
                 });
                 let observacao = document.getElementById(`obs_${cat.id}`).value;
@@ -345,10 +289,7 @@
 
             const novaVistoria = {
                 id: Date.now(),
-                modelo,
-                placa,
-                motorista,
-                quilometragem,
+                modelo, placa, motorista, quilometragem,
                 data: dataVistoria,
                 checklist: dadosChecklist,
                 fotos: [...fotosSalvas]
@@ -375,7 +316,6 @@
         function carregarHistorico() {
             const lista = document.getElementById('listaHistorico');
             const contador = document.getElementById('contadorHistorico');
-            
             contador.innerText = `${vistoriasSalvas.length} registros`;
 
             if (vistoriasSalvas.length === 0) {
@@ -390,7 +330,7 @@
                         <p class="text-xs text-slate-500 mt-0.5">Motorista: <span class="font-medium text-slate-700">${v.motorista}</span></p>
                         <p class="text-xs text-slate-500">Data: ${v.data} | KM: ${v.quilometragem}</p>
                     </div>
-                    <button onclick="abrirDetalhes(${v.id})" class="bg-blue-50 hover:bg-blue-100 text-blue-600 px-3 py-2 rounded-lg text-xs font-semibold transition flex items-center gap-1">
+                    <button onclick="abrirDetalhes(${v.id})" class="bg-emerald-50 hover:bg-emerald-100 text-emerald-700 px-3 py-2 rounded-lg text-xs font-semibold transition flex items-center gap-1">
                         <i class="fa-solid fa-eye"></i> Ver
                     </button>
                 </div>
@@ -416,7 +356,7 @@
                         <p class="text-xs text-slate-500 mt-0.5">Motorista: <span class="font-medium text-slate-700">${v.motorista}</span></p>
                         <p class="text-xs text-slate-500">Data: ${v.data} | KM: ${v.quilometragem}</p>
                     </div>
-                    <button onclick="abrirDetalhes(${v.id})" class="bg-blue-50 hover:bg-blue-100 text-blue-600 px-3 py-2 rounded-lg text-xs font-semibold transition flex items-center gap-1">
+                    <button onclick="abrirDetalhes(${v.id})" class="bg-emerald-50 hover:bg-emerald-100 text-emerald-700 px-3 py-2 rounded-lg text-xs font-semibold transition flex items-center gap-1">
                         <i class="fa-solid fa-eye"></i> Ver
                     </button>
                 </div>
@@ -430,7 +370,7 @@
 
             let htmlChecklist = v.checklist.map(cat => `
                 <div class="border-b border-slate-100 pb-2 mb-2">
-                    <strong class="text-blue-600 text-xs block uppercase">${cat.categoria}</strong>
+                    <strong class="text-emerald-700 text-xs block uppercase">${cat.categoria}</strong>
                     ${cat.itens.map(i => `
                         <div class="flex justify-between text-xs py-0.5">
                             <span class="text-slate-700">${i.nome}</span>
@@ -471,17 +411,15 @@
             vistoriaAtualDetalhe = null;
         }
 
-        function exportarPDFModal() {
-            if (!vistoriaAtualDetalhe) return;
+        function gerarInstanciaPDF() {
             const v = vistoriaAtualDetalhe;
-
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF();
 
             let y = 15;
             doc.setFont("helvetica", "bold");
             doc.setFontSize(16);
-            doc.setTextColor(37, 99, 235);
+            doc.setTextColor(5, 150, 105); // Cor verde no PDF
             doc.text("Relatorio de Vistoria de Veiculo", 14, y);
             
             y += 10;
@@ -503,7 +441,7 @@
                 if (y > 270) { doc.addPage(); y = 20; }
                 doc.setFont("helvetica", "bold");
                 doc.setFontSize(11);
-                doc.setTextColor(37, 99, 235);
+                doc.setTextColor(5, 150, 105);
                 doc.text(cat.categoria.toUpperCase(), 14, y);
                 y += 6;
 
@@ -515,7 +453,7 @@
                     if (y > 280) { doc.addPage(); y = 20; }
                     doc.text(`- ${item.nome}:`, 18, y);
                     doc.setFont("helvetica", "bold");
-                    doc.setTextColor(item.status === 'Ok' ? 16 : 220, item.status === 'Ok' ? 120 : 38, item.status === 'Ok' ? 66 : 38);
+                    doc.setTextColor(item.status === 'Ok' ? 5 : 220, item.status === 'Ok' ? 150 : 38, item.status === 'Ok' ? 105 : 38);
                     doc.text(item.status, 140, y);
                     doc.setFont("helvetica", "normal");
                     doc.setTextColor(50, 50, 50);
@@ -538,7 +476,7 @@
                 y = 20;
                 doc.setFont("helvetica", "bold");
                 doc.setFontSize(14);
-                doc.setTextColor(37, 99, 235);
+                doc.setTextColor(5, 150, 105);
                 doc.text("Registro Fotografico de Avarias", 14, y);
                 y += 10;
 
@@ -559,36 +497,37 @@
                     }
                 });
             }
-
-            doc.save(`Vistoria_${v.placa}_${v.data}.pdf`);
+            return doc;
         }
 
-        function compartilharWhatsApp() {
+        function exportarPDFModal() {
+            if (!vistoriaAtualDetalhe) return;
+            const doc = gerarInstanciaPDF();
+            doc.save(`Vistoria_${vistoriaAtualDetalhe.placa}_${vistoriaAtualDetalhe.data}.pdf`);
+        }
+
+        async function compartilharPDFWhatsApp() {
             if (!vistoriaAtualDetalhe) return;
             const v = vistoriaAtualDetalhe;
+            const doc = gerarInstanciaPDF();
+            const pdfBlob = doc.output('blob');
+            const nomeArquivo = `Vistoria_${v.placa}_${v.data}.pdf`;
+            const arquivo = new File([pdfBlob], nomeArquivo, { type: 'application/pdf' });
 
-            let textoAvarias = "";
-            v.checklist.forEach(cat => {
-                let avariasCat = cat.itens.filter(i => i.status !== 'Ok');
-                if (avariasCat.length > 0 || cat.obs) {
-                    textoAvarias += `\n*${cat.categoria}*:`;
-                    avariasCat.forEach(i => { textoAvarias += `\n  - ${i.nome}: ⚠️ ${i.status}`; });
-                    if (cat.obs) textoAvarias += `\n  - Obs: ${cat.obs}`;
+            if (navigator.canShare && navigator.canShare({ files: [arquivo] })) {
+                try {
+                    await navigator.share({
+                        title: 'Relatório de Vistoria',
+                        text: `Relatório de vistoria do veículo ${v.modelo} (${v.placa}) - Motorista: ${v.motorista}`,
+                        files: [arquivo],
+                    });
+                } catch (error) {
+                    console.log('Compartilhamento cancelado ou falhou', error);
                 }
-            });
-
-            if (!textoAvarias) textoAvarias = "\nNenhuma avaria reportada. Todos os itens OK!";
-
-            const mensagem = `📋 *RELATÓRIO DE VISTORIA - VEÍCULO*` +
-                             `\n🚗 *Veículo:* ${v.modelo} (${v.placa})` +
-                             `\n👤 *Motorista:* ${v.motorista}` +
-                             `\n📅 *Data:* ${v.data} | *KM:* ${v.quilometragem}` +
-                             `\n\n🔍 *Resumo de Inspeção:*` +
-                             textoAvarias +
-                             `\n\n_Relatório gerado pelo App de Vistoria._`;
-
-            const linkWp = `https://api.whatsapp.com/send?text=${encodeURIComponent(mensagem)}`;
-            window.open(linkWp, '_blank');
+            } else {
+                doc.save(nomeArquivo);
+                alert('Seu navegador não suporta envio direto de arquivos. O PDF foi baixado no aparelho. Agora você pode anexá-lo manualmente no WhatsApp!');
+            }
         }
 
         function alternarTela(tela) {
